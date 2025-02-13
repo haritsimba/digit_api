@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -37,11 +38,16 @@ public class ChatGroupService {
 
     }
 
+
     private Set<Student> getStudentBySDL(ChatGroup group){
         return studentRepository.getStudentBySchoolAndDepartmentAndLevel(group.getGroupSchool(),group.getGroupDepartment(),group.getGroupLevel());
     }
 
     private Teacher getTeacher(Long id){
         return teacherRepository.findById(id).orElseThrow();
+    }
+
+    public Set<ChatGroup> getTeacherGroups(Long teacherId){
+        return chatGroupRepository.getChatGroupByTeacherId(teacherId) ;
     }
 }

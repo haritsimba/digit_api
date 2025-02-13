@@ -20,4 +20,9 @@ public class NotificationService {
         String topic = "/topic/class/" + school + "/" + department + "/" + level;
         messagingTemplate.convertAndSend(topic, notification);
     }
+
+    public void sendEvenementNotification(NotificationDTO notification) {
+        String topic = "/topic/evenement";
+        messagingTemplate.convertAndSend(topic, notification);
+    }
 }

@@ -38,9 +38,9 @@ public class TimetableService {
         timeTable.setSchool(timeTableIn.getSchool());
         timeTable.setDepartment(timeTableIn.getDepartment());
         timeTable.setLevel(timeTableIn.getLevel());
+        timeTable.setTeacherName(teacherRepository.findById(timeTable.getTeacherId()).orElseThrow().getName());
 
-
-            String group = timeTableIn.getGroupName() == null ? timeTableIn.getSubject() : timeTableIn.getGroupName();
+        String group = timeTableIn.getGroupName() == null ? timeTableIn.getSubject() : timeTableIn.getGroupName();
 
 
 

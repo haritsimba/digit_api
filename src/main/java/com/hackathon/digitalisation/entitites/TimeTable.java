@@ -24,6 +24,7 @@ public class TimeTable {
     LocalTime end;
     String day;
     Long teacherId;
+    String teacherName;
     String school;
     String department;
     LevelType level;

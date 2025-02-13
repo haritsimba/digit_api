@@ -34,4 +34,7 @@ public class TeacherService {
         Teacher teacher = teacherRepository.getTeachersByEmailAndPassword(loginInfo.email(), loginInfo.password());
         return ResponseEntity.ok().body(teacher);
     }
+    public Teacher getTeacherById(Long id){
+        return teacherRepository.findById(id).orElse(null);
+    }
 }

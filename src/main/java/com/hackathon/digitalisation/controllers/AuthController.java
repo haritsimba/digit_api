@@ -9,10 +9,7 @@ import com.hackathon.digitalisation.services.StudentSevice;
 import com.hackathon.digitalisation.services.TeacherService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
@@ -38,5 +35,14 @@ public class AuthController {
     @PostMapping(path = "register/teacher")
     public ResponseEntity<Teacher> registerTeacher(@RequestBody RegisterTeacherIn register){
         return teacherService.registerTeacher(register);
+    }
+
+    @GetMapping(path = "teacher/{teacherId}")
+    public ResponseEntity<Teacher> findTeacherById(@PathVariable("teacherId") Long id){
+        Teacher teacher =  teacherService.getTeacherById(id);
+        if( teacher == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().body(teacher);
     }
 }

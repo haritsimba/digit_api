@@ -1,4 +1,7 @@
 package com.hackathon.digitalisation.repositories;
 
-public interface EvenementRepository {
+import com.hackathon.digitalisation.entitites.Evenement;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EvenementRepository extends JpaRepository<Evenement,Long> {
 }

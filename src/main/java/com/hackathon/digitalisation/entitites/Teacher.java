@@ -30,7 +30,7 @@ public class Teacher {
     @Enumerated(value = EnumType.STRING)
     UserType type;
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"students","teacher","groupLevel","groupSchool","groupDepartment"})
+    @JsonIgnoreProperties({"students","teacher"})
     List<ChatGroup> chatGroups = new ArrayList<>();
 
 }
